@@ -1,0 +1,140 @@
+.kural-container.sleek {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #fffbe6 0%, #ffe066 100%);
+  color: #111;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  box-sizing: border-box;
+}
+.title {
+  font-size: 2.7rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.01em;
+  color: #b80000;
+  text-align: center;
+}
+.refresh-btn {
+  background: #fffbe6;
+  border: 1.5px solid #b80000;
+  border-radius: 50%;
+  width: 2.7rem;
+  height: 2.7rem;
+  font-size: 1.5rem;
+  color: #b80000;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.refresh-btn:hover {
+  background: #b80000;
+  color: #ffe066;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.15);
+}
+.kural-card {
+  background: #fffbe6;
+  border: 2px solid #111;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(60,80,180,0.10);
+  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
+  max-width: 420px;
+  width: 90vw;
+  margin-bottom: 2.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.kural-number {
+  font-size: 1.1rem;
+  color: #b80000;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+.kural-lines {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.7rem;
+  color: #111;
+  line-height: 1.7;
+  max-width: 650px;
+  word-break: keep-all;
+  white-space: pre-line;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.meanings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 100%;
+}
+.meaning-block {
+  background: #ffe066;
+  border-left: 4px solid #b80000;
+  border-radius: 0.7rem;
+  padding: 1rem 1.1rem;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(60,80,180,0.04);
+}
+.meaning-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #b80000;
+  margin-bottom: 0.2rem;
+}
+.meaning-text {
+  font-size: 0.95rem;
+  color: #111;
+  font-weight: 400;
+}
+.loader {
+  font-size: 1.2rem;
+  color: #b80000;
+  margin: 2rem 0;
+}
+.error {
+  color: #b80000;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+.footer {
+  margin-top: auto;
+  font-size: 0.97rem;
+  color: #b80000;
+  padding-bottom: 1.2rem;
+  text-align: center;
+}
+.footer a {
+  color: #111;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #b80000;
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .kural-card {
+    padding: 1.2rem 0.7rem 1.5rem 0.7rem;
+    max-width: 99vw;
+  }
+  .kural-lines {
+    font-size: 1.08rem;
+    max-width: 95vw;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+}
