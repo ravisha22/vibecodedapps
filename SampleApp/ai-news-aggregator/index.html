@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI News Aggregator</title>
+    <style>
+        .news-item {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .read {
+            opacity: 0.5;
+        }
+        .content {
+            max-height: 200px;
+            overflow: hidden;
+        }
+        .more {
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI News Aggregator</h1>
+    <div id="news-container">
+        <!-- News items will be loaded here -->
+    </div>
+
+    <script>
+        function markAsRead(newsId) {
+            fetch(`/mark-as-read?id=${newsId}`)
+                .then(response => {
+                    if (response.ok) {
+                        const newsItem = document.getElementById(`news-${newsId}`);
+                        newsItem.classList.add('read');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function toggleContent(newsId) {
+            var content = document.getElementById(`content-${newsId}`);
+            var moreLink = document.getElementById(`more-${newsId}`);
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                moreLink.textContent = "Read more";
+            } else {
+                content.style.maxHeight = "none";
+                moreLink.textContent = "Read less";
+            }
+        }
+
+        function loadNews() {
+            fetch('/news')
+                .then(response => response.json())
+                .then(news => {
+                    const container = document.getElementById('news-container');
+                    container.innerHTML = ''; // Clear previous news
+                    news.forEach(item => {
+                        const newsItem = document.createElement('div');
+                        newsItem.classList.add('news-item');
+                        if (item.read) {
+                            newsItem.classList.add('read');
+                        }
+                        newsItem.id = `news-${item.id}`;
+                        newsItem.innerHTML = `
+                            <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
+                            <p>Source: ${item.source}</p>
+                            <p>Published: ${item.published}</p>
+                            <div id="content-${item.id}" class="content">${item.content}</div>
+                            <a id="more-${item.id}" class="more" onclick="toggleContent(${item.id})">Read more</a><br>
+                            <button onclick="markAsRead(${item.id})">Mark as Read</button>
+                        `;
+                        container.appendChild(newsItem);
+                    });
+                });
+        }
+
+        loadNews(); // Load news on page load
+    </script>
+</body>
+</html>
